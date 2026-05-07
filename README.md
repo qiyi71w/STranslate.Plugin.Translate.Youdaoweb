@@ -1,8 +1,22 @@
-<p align="center">
-  <img src="./icon.png" alt="Youdao Web icon" width="96" height="96" />
-</p>
+<div align="center">
+  <a href="https://github.com/qiyi71w/STranslate.Plugin.Translate.Youdaoweb">
+    <img src="./icon.png" alt="有道网页翻译" width="128" height="128" />
+  </a>
 
-# STranslate.Plugin.Translate.YoudaoWeb
+  <h1>有道网页翻译</h1>
+
+  <p>
+    有道网页端翻译插件 for <a href="https://github.com/STranslate/STranslate">STranslate</a>
+  </p>
+
+  <p>
+    <img alt="License" src="https://img.shields.io/github/license/qiyi71w/STranslate.Plugin.Translate.Youdaoweb?style=flat-square" />
+    <img alt="Release" src="https://img.shields.io/github/v/release/qiyi71w/STranslate.Plugin.Translate.Youdaoweb?style=flat-square" />
+    <img alt="Downloads" src="https://img.shields.io/github/downloads/qiyi71w/STranslate.Plugin.Translate.Youdaoweb/total?style=flat-square" />
+    <img alt=".NET" src="https://img.shields.io/badge/.NET-10.0-512bd4?style=flat-square" />
+    <img alt="WPF" src="https://img.shields.io/badge/WPF-Plugin-blue?style=flat-square" />
+  </p>
+</div>
 
 `STranslate.Plugin.Translate.YoudaoWeb` 是一个面向 [STranslate](https://github.com/STranslate/STranslate) 的第三方翻译插件，调用有道网页端翻译接口完成文本翻译，不依赖有道智云官方付费 OpenAPI，也不需要配置 AppKey / AppSecret。
 

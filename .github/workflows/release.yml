@@ -1,0 +1,58 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Build and publish release
+    runs-on: windows-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore
+        run: dotnet restore .\STranslate.Plugin.Translate.YoudaoWeb.csproj
+
+      - name: Build package
+        run: dotnet build .\STranslate.Plugin.Translate.YoudaoWeb.csproj --configuration Release --no-restore
+
+      - name: Prepare release artifact
+        shell: pwsh
+        run: |
+          $source = "bin\Release\plugins\STranslate.Plugin.Translate.YoudaoWeb.spkg"
+          if (-not (Test-Path $source)) {
+            throw "Release package not found: $source"
+          }
+
+          New-Item -ItemType Directory -Force -Path "artifacts" | Out-Null
+          Copy-Item $source "artifacts\STranslate.Plugin.Translate.YoudaoWeb-${{ github.ref_name }}.spkg"
+
+      - name: Upload workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: STranslate.Plugin.Translate.YoudaoWeb-${{ github.ref_name }}
+          path: artifacts/*.spkg
+          if-no-files-found: error
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: artifacts/*.spkg
+          generate_release_notes: true
