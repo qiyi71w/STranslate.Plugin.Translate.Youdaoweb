@@ -36,7 +36,11 @@ public class Main : TranslatePluginBase
     private Control? _settingUi;
     private IPluginContext Context { get; set; } = null!;
 
-    public override void Init(IPluginContext context) => Context = context;
+    public override void Init(IPluginContext context)
+    {
+        Context = context;
+        _ = Context.LoadSettingStorage<PluginSettings>();
+    }
 
     public override Control GetSettingUI()
     {
@@ -299,5 +303,9 @@ public class Main : TranslatePluginBase
 
         [JsonPropertyName("tgt")]
         public string? Tgt { get; set; }
+    }
+
+    private sealed class PluginSettings
+    {
     }
 }
