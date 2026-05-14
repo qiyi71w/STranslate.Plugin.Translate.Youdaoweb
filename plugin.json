@@ -3,7 +3,7 @@
   "Name": "有道网页翻译",
   "Description": "无需官方 API Key 的有道网页端翻译插件",
   "Author": "qiyi71w",
-  "Version": "0.1.0",
+  "Version": "1.0.0",
   "Website": "https://github.com/qiyi71w/STranslate.Plugin.Translate.Youdaoweb",
   "ExecuteFileName": "STranslate.Plugin.Translate.YoudaoWeb.dll",
   "IconPath": "icon.png"
